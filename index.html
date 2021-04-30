@@ -3,12 +3,16 @@
 	<head>
 		<meta charset="utf-8">
 		<title>XR Manufacturing Assistant 0.0 (building in progress)</title>
-		<link rel="stylesheet" href="main.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	</head>
 	<body>
-		<script src="js/three.js"></script>
-		<script>
-			
+		<script type="module>
+			import { App } from './app.js';
+			      
+			document.addEventListener("DOMContentLoaded", function(){
+				const app  = new App();
+				window.app = app;
+			});
 		</script>
 	</body>
 </html>
