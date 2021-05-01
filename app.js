@@ -1,5 +1,5 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
-//import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
+import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
 
 class App{
 	constructor(){
@@ -44,7 +44,7 @@ class App{
 		this.mesh = new THREE.Mesh(geometry, material);
 		this.scene.add(this.mesh);
 
-		//const controls = new OrbitControls(this.camera, this.renderer.domElement);
+		const controls = new OrbitControls(this.camera, this.renderer.domElement);
 		
 		window.addEventListener('resize', this.resize.bind(this));
 	}
