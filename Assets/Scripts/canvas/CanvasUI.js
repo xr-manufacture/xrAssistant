@@ -9,7 +9,7 @@ import {
 	WebGLRenderer,
 	Vector3,
 	IcosahedronBufferGeometry
-} from '../../../build/three.module.js';
+} from '../THREE/build/three.module.js';
 import { CanvasKeyboard } from './CanvasKeyboard.js';
 
 /*An element is defined by 
