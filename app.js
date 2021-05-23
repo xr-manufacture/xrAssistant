@@ -1,5 +1,6 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
 import {VRButton} from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
+import { OrbitControls } from 'https://cdn.skypack.dev/three@<version>/examples/jsm/controls/OrbitControls.js';
 // import './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
 
 function main(){
@@ -27,23 +28,14 @@ function main(){
 	});
 	const cube = new THREE.Mesh(geometry, material);
 	scene.add(cube);
+
 	camera.position.z = 5;
 
-	setupVR(renderer);
-	render(scene, camera, renderer);
-
-	function setupVR(renderer){
-		document.body.appendChild(VRButton.createButton(renderer));
-	}
+	document.body.appendChild(VRButton.createButton(renderer));
 	
-	function resize(){
-		
-	}
-
-	function render(scene, camera, renderer){
-		requestAnimationFrame(render);
+	renderer.setAnimationLoop(function(){
 		renderer.render(scene, camera);
-	}	
+	})
 }
 
 main();
