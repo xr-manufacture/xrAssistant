@@ -41,6 +41,7 @@ function main(){
 		controls.update();
 		renderer.render(scene, camera);
 	}
+	animate();
 }
 
 main();
