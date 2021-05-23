@@ -1,6 +1,6 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
 import {VRButton} from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
-import { OrbitControls } from 'https://cdn.skypack.dev/three@<version>/examples/jsm/controls/OrbitControls.js';
+// import { OrbitControls } from 'https://cdn.skypack.dev/three@<version>/examples/jsm/controls/OrbitControls.js';
 // import './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
 
 function main(){
