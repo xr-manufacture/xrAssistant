@@ -8,7 +8,7 @@ import { OBJLoader } from './Assets/Scripts/THREE/examples/jsm/loaders/OBJLoader
 import { VRButton } from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
 import { XRControllerModelFactory } from './Assets/Scripts/THREE/examples/jsm/webxr/XRControllerModelFactory.js';
 import { XRHandModelFactory } from './Assets/Scripts/THREE/examples/jsm/webxr/XRHandModelFactory.js';
-import { CanvasUI } from './Assets/Scripts/THREE/examples/jsm/canvas/CanvasUI.js';
+import { CanvasUI } from './Assets/Scripts/canvas/CanvasUI.js';
 //import { controllers } from './Assets/Scripts/THREE/examples/jsm/libs/dat.gui.module.js';
 
 const clock = new THREE.Clock();
