@@ -7,7 +7,7 @@ class App{
 		document.body.appendChild( container );
 
 		// write code here
-		this camera = new THREE.PerspectiveCamera(
+		this.camera = new THREE.PerspectiveCamera(
 			60, 
 			window.innerWidth/window.innerHeight,
 			0.1,
@@ -16,7 +16,7 @@ class App{
 		this.camera.position.set(0,0,4);
 
 		this.scene = new THREE.Scene();
-		this.scene.background = new THREE.Color(0xaaaaaa);
+		this.scene.background = new THREE.Color(0x000000);
 
 		const ambient = new THREE.HemisphereLight(
 			0xffffff,
@@ -37,7 +37,7 @@ class App{
 		this.renderer.setAnimationLoop(this.render.bind(this));
 
 		// Add geometries
-		const geometry = new THREE.BoxBufferGeoemtry();
+		const geometry = new THREE.BoxBufferGeometry();
 		const material = new THREE.MeshStandardMaterial({
 			color: 0xff0000
 		});
