@@ -1,6 +1,6 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
 import {VRButton} from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
-import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControlsM.js';
+// import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControlsM.js';
 
 class App{
 	constructor(){
