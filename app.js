@@ -1,7 +1,7 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
 import {VRButton} from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
 // import { OrbitControls } from 'https://cdn.skypack.dev/three@<version>/examples/jsm/controls/OrbitControls.js';
-// import './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
+import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
 
 function main(){
 	/* Scene */
@@ -18,7 +18,7 @@ function main(){
 	/* Windows renderer */
 	const renderer = new THREE.WebGLRenderer();
 	renderer.setSize(window.innerWidth, window.innerHeight);
-	renderer.xr.enabled = true;
+	// renderer.xr.enabled = true;
 	document.body.appendChild(renderer.domElement);
 
 	/* Test Geometry */
@@ -29,13 +29,18 @@ function main(){
 	const cube = new THREE.Mesh(geometry, material);
 	scene.add(cube);
 
+	/* Orbit Controls */
+	const controls = new OrbitControls(camera, renderer.domElement);
 	camera.position.z = 5;
+	controls.update();
 
-	document.body.appendChild(VRButton.createButton(renderer));
+	// document.body.appendChild(VRButton.createButton(renderer));
 	
-	renderer.setAnimationLoop(function(){
+	function animate(){
+		requestAnimationFrame(animate);
+		controls.update();
 		renderer.render(scene, camera);
-	})
+	}
 }
 
 main();
