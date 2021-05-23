@@ -1,67 +1,52 @@
 import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
+import {VRButton} from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
 import {OrbitControls} from './Assets/Scripts/THREE/examples/js/controls/OrbitControls.js';
 
 class App{
 	constructor(){
-		const container = document.createElement('div');
-		document.body.appendChild( container );
+		
+		/* Scene */
+		const scene = new THREE.Scene();
 
-		// write code here
-		this.camera = new THREE.PerspectiveCamera(
-			60, 
-			window.innerWidth/window.innerHeight,
+		/* Camera */
+		const camera = new THREE.PerspectiveCamera(
+			75,
+			window.innerWidth / window.innerHeight,
 			0.1,
 			1000
 		);
-		this.camera.position.set(0,0,4);
 
-		this.scene = new THREE.Scene();
-		this.scene.background = new THREE.Color(0x000000);
+		/* Windows renderer */
+		const renderer = new THREE.WebGLRenderer();
+		renderer.setSize(window.innerWidth, window.innerHeight);
+		renderer.xr.enabled = true;
+		document.body.appendChild(renderer.domElement);
 
-		const ambient = new THREE.HemisphereLight(
-			0xffffff,
-			0xbbbbff,
-			0.3
-		);
-		this.scene.add(ambient);
-
-		const light = new THREE.DirectionalLight();
-		light.position.set(0.2, 1, 1);
-		this.scene.add(light);
-
-		this.renderer = new THREE.WebGLRenderer({antialias: true});
-		this.renderer.setPixelRatio(window.devicePixelRatio);
-		this.renderer.setSize(window.innerWidth, window.innerHeight);
-		container.appendChild(this.renderer.domElement);
-
-		this.renderer.setAnimationLoop(this.render.bind(this));
-
-		// Add geometries
-		const geometry = new THREE.BoxBufferGeometry();
-		const material = new THREE.MeshStandardMaterial({
-			color: 0xff0000
+		/* Test Geometry */
+		const geometry = new THREE.BoxGeometry();
+		const material = new THREE.MeshBasicMaterial({
+			color : 0x00ff00
 		});
-		this.mesh = new THREE.Mesh(geometry, material);
-		this.scene.add(this.mesh);
+		const cube = new THREE.Mesh(geometry, material);
+		scene.add(cube);
+		camera.position.z = 5;
 
-		const controls = new OrbitControls(this.camera, this.renderer.domElement);
-		
-		window.addEventListener('resize', this.resize.bind(this));
+		setupVR(renderer);
+		render(scene, camera, renderer);
+
 	}
 
-	setupVR(){
-	
+	setupVR(renderer){
+		document.body.appendChild(VRButton.createButton(renderer));
 	}
 	
 	resize(){
-		this.camera.aspect = window.innerWidth/window.innerHeight;
-		this.camera.updateProjectionMatrix();
-		this.renderer.setSize(window.innerWidth, window.innerHeight);
+		
 	}
 
-	render(){
-		this.mesh.rotateY(0.01);
-		this.renderer.render(this.scene, this.camera);
+	render(scene, camera, renderer){
+		requestAnimationFrame(render);
+		renderer.render(scene, camera);
 	}
 }
 
