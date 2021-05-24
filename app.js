@@ -63,11 +63,7 @@ function init() {
 	//pointLight = new THREE.PointLight( 0xffffff, 2 );
 	scene.add(new THREE.PointLight(0xffffff, 2));
 
-	//const dlight = new THREE.DirectionalLight(0xffffff);
-	//dlight.position.set(1, 1, 1).normalize();
-	//scene.add(dlight);
-
-	//scene.add(new THREE.HemisphereLight(0x606060, 0x404040));
+	
 
 	//materials
 	const cubeMaterial3 = new THREE.MeshLambertMaterial( { color: 0xff6600, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3 } );
