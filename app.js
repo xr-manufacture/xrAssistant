@@ -71,30 +71,30 @@ function init() {
 	const cubeMaterial1 = new THREE.MeshLambertMaterial( { color: 0xffffff, envMap: reflectionCube } );
 
 	//models
-	const objLoader = new OBJLoader();
+	// const objLoader = new OBJLoader();
 
-	objLoader.setPath( './Assets/Models/Walt/');
-	objLoader.load( 'WaltHead.obj', function ( object ) {
+	// objLoader.setPath( './Assets/Models/Walt/');
+	// objLoader.load( 'WaltHead.obj', function ( object ) {
 
-		const head = object.children[ 0 ];
+	// 	const head = object.children[ 0 ];
 
-		head.scale.multiplyScalar( 15 );
-		head.position.y = 0;
-		head.position.z = -2;
-		head.material = cubeMaterial1;
-		head.scale.set(0.02, 0.02, 0.02);
+	// 	head.scale.multiplyScalar( 15 );
+	// 	head.position.y = 0;
+	// 	head.position.z = -2;
+	// 	head.material = cubeMaterial1;
+	// 	head.scale.set(0.02, 0.02, 0.02);
 
-		const head2 = head.clone();
-		head2.position.x = - 2;
-		head2.material = cubeMaterial2;
+	// 	const head2 = head.clone();
+	// 	head2.position.x = - 2;
+	// 	head2.material = cubeMaterial2;
 
-		const head3 = head.clone();
-		head3.position.x = 2;
-		head3.material = cubeMaterial3;
+	// 	const head3 = head.clone();
+	// 	head3.position.x = 2;
+	// 	head3.material = cubeMaterial3;
 
-		scene.add( head, head2, head3 );
+	// 	scene.add( head, head2, head3 );
 
-	} );
+	// } );
 
 	//renderer
 	renderer = new THREE.WebGLRenderer({ antialias: true });
