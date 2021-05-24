@@ -157,12 +157,12 @@ function setupXR() {
 
 	// Hand 1
 	hand1 = renderer.xr.getHand(0);
-	hand1.add(handModelFactory.createHandModel(hand1, "sphere"));
+	hand1.add(handModelFactory.createHandModel(hand1, "spheres"));
 	scene.add(hand1);
 
 	// Hand 2
 	hand2 = renderer.xr.getHand(1);
-	hand2.add(handModelFactory.createHandModel(hand2, "sphere"));
+	hand2.add(handModelFactory.createHandModel(hand2, "spheres"));
 	scene.add(hand2);
 
 	// Handle controllers/hands
