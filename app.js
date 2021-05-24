@@ -42,7 +42,7 @@ function init() {
 	camera.position.set(0, 1.6, 0);
 
 	//cubemap
-	const path = 'textures/cube/SwedishRoyalCastle/';
+	const path = './Assets/Images/';
 	const format = '.jpg';
 	const urls = [
 		path + 'px' + format, path + 'nx' + format,
@@ -77,7 +77,7 @@ function init() {
 	//models
 	const objLoader = new OBJLoader();
 
-	objLoader.setPath( 'models/obj/walt/' );
+	objLoader.setPath( './Assets/Models/Walt/');
 	objLoader.load( 'WaltHead.obj', function ( object ) {
 
 		const head = object.children[ 0 ];
@@ -139,7 +139,7 @@ function setupXR() {
 	// Controllers and Hand Tracking
 
 	const controllerModelFactory = new XRControllerModelFactory();
-	const handModelFactory = new XRHandModelFactory().setPath("./models/fbx/");
+	const handModelFactory = new XRHandModelFactory().setPath("./Assets/Scripts/THREE/examples/models/fbx/");
 
 	// Controller 1
 	controller1 = renderer.xr.getController(0);
