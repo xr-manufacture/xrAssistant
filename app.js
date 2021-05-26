@@ -126,6 +126,7 @@ async function loadModels(model_type, model_url){
 		function(geometry){
 			const mesh = new THREE.Mesh(geometry, material);
 			scene.add(mesh);
+			mesh.position.z = 5;
 		},
 		(xhr) => {
 			console.log((xhr.loaded/xhr.total*100)+'% loaded');
