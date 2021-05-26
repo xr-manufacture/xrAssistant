@@ -250,6 +250,7 @@ function animate() {
 
 function render() {
 	stats.update();
+	controls.update();
 	if(renderer.xr.isPresenting) ui.update();
 
 	renderer.render( scene, camera );
