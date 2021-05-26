@@ -107,7 +107,7 @@ function init() {
 }
 
 async function loadModels(model_type, model_url){
-	// Ref: https://discoverthreejs.com/book/first-steps/load-models/
+	// Ref: https://discoverthreejs.com/book/first-steps/load-models/https://sbcode.net/threejs/loaders-stl/
 	var loader;
 	const material = new THREE.MeshPhysicalMaterial({
 		color: 0xb2ffc8,
