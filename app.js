@@ -66,7 +66,8 @@ function init() {
 	scene.add(new THREE.PointLight(0xffffff, 2));
 
 	//Load models
-	loadModels('https://drive.google.com/file/d/1cn284pT72Qt7gUkdk_ZXeUZWOdJKmYF_/view?usp=sharing', "stl");
+	// loadModels('https://drive.google.com/file/d/1cn284pT72Qt7gUkdk_ZXeUZWOdJKmYF_/view?usp=sharing', "stl");
+	loadModels('./Assets/Scripts/THREE/examples/models/stl/binary/colored.stl', "stl");
 
 	//materials
 	const cubeMaterial3 = new THREE.MeshLambertMaterial( { color: 0xff6600, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3 } );
