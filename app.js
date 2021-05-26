@@ -107,14 +107,14 @@ function init() {
 
 async function loadModels(model_url, model_type){
 	// Ref: https://discoverthreejs.com/book/first-steps/load-models/
-	switch(type){
+	var loader, loaded;
+	switch(model_type){
 		case "gltf":
-			const loader = new GLTFLoader();
+			loader = new GLTFLoader();
 		case "stl":
-			const loader = new STLLoader();
+			loader = new STLLoader();
 	}
-	
-	const loaded = await loader.loadAsync(model_url);
+	loaded = await loader.loadAsync(model_url);
 	scene.add(loaded);
 }
 
