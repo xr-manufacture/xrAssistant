@@ -108,16 +108,32 @@ function init() {
 
 async function loadModels(model_type, model_url){
 	// Ref: https://discoverthreejs.com/book/first-steps/load-models/
-	var loader, loaded, mesh;
+	var loader;
+	const material = new THREE.MeshPhysicalMaterial({
+		color: 0xb2ffc8,
+		side: THREE.DoubleSide,
+		roughness: 0.1,
+		metalness: .25
+	});
 	switch(model_type){
 		case "gltf":
 			loader = new GLTFLoader();
 		case "stl":
 			loader = new STLLoader();
 	}
-	loaded = loader.load(model_url, function(model){
-		scene.add(model);
-	});
+	loader.load(
+		model_url,
+		function(geometry){
+			const mesh = new THREE.Mesh(geometry, material);
+			scene.add(mesh);
+		},
+		(xhr) => {
+			console.log((xhr.loaded/xhr.total*100)+'% loaded');
+		},
+		(error)=>{
+			console.log(error);
+		}
+	);
 }
 
 function setupXR() {
