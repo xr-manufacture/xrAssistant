@@ -67,7 +67,7 @@ function init() {
 
 	//Load models
 	// loadModels('https://drive.google.com/file/d/1cn284pT72Qt7gUkdk_ZXeUZWOdJKmYF_/view?usp=sharing', "stl");
-	loadModels('./Assets/Scripts/THREE/examples/models/stl/binary/colored.stl', "stl");
+	loadModels('stl', './Assets/Scripts/THREE/examples/models/stl/binary/colored.stl');
 
 	//materials
 	const cubeMaterial3 = new THREE.MeshLambertMaterial( { color: 0xff6600, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3 } );
@@ -106,17 +106,18 @@ function init() {
 	window.addEventListener('resize', onWindowResize);
 }
 
-async function loadModels(model_url, model_type){
+async function loadModels(model_type, model_url){
 	// Ref: https://discoverthreejs.com/book/first-steps/load-models/
-	var loader, loaded;
+	var loader, loaded, mesh;
 	switch(model_type){
 		case "gltf":
 			loader = new GLTFLoader();
 		case "stl":
 			loader = new STLLoader();
 	}
-	loaded = await loader.loadAsync(model_url);
-	scene.add(loaded);
+	loaded = loader.load(model_url, function(model){
+		scene.add(model);
+	});
 }
 
 function setupXR() {
