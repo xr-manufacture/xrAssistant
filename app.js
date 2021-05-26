@@ -4,7 +4,9 @@ import * as THREE from './Assets/Scripts/THREE/build/three.module.js';
 import Stats from './Assets/Scripts/THREE/examples/jsm/libs/stats.module.js';
 
 import { OrbitControls } from './Assets/Scripts/THREE/examples/jsm/controls/OrbitControls.js';
-import { OBJLoader } from './Assets/Scripts/THREE/examples/jsm/loaders/OBJLoader.js';
+// import { OBJLoader } from './Assets/Scripts/THREE/examples/jsm/loaders/OBJLoader.js';
+import {GLTFLoader} from './Assets/Scripts/THREE/examples/jsm/loaders/GLTFLoader.js';
+import {STLLoader} from './Assets/Scripts/THREE/examples/jsm/loaders/STLLoader.js';
 import { VRButton } from './Assets/Scripts/THREE/examples/jsm/webxr/VRButton.js';
 import { XRControllerModelFactory } from './Assets/Scripts/THREE/examples/jsm/webxr/XRControllerModelFactory.js';
 import { XRHandModelFactory } from './Assets/Scripts/THREE/examples/jsm/webxr/XRHandModelFactory.js';
@@ -63,38 +65,13 @@ function init() {
 	//pointLight = new THREE.PointLight( 0xffffff, 2 );
 	scene.add(new THREE.PointLight(0xffffff, 2));
 
-	
+	//Load models
+	loadModels('https://drive.google.com/file/d/1cn284pT72Qt7gUkdk_ZXeUZWOdJKmYF_/view?usp=sharing', "stl");
 
 	//materials
 	const cubeMaterial3 = new THREE.MeshLambertMaterial( { color: 0xff6600, envMap: reflectionCube, combine: THREE.MixOperation, reflectivity: 0.3 } );
 	const cubeMaterial2 = new THREE.MeshLambertMaterial( { color: 0xffee00, envMap: refractionCube, refractionRatio: 0.95 } );
 	const cubeMaterial1 = new THREE.MeshLambertMaterial( { color: 0xffffff, envMap: reflectionCube } );
-
-	//models
-	// const objLoader = new OBJLoader();
-
-	// objLoader.setPath( './Assets/Models/Walt/');
-	// objLoader.load( 'WaltHead.obj', function ( object ) {
-
-	// 	const head = object.children[ 0 ];
-
-	// 	head.scale.multiplyScalar( 15 );
-	// 	head.position.y = 0;
-	// 	head.position.z = -2;
-	// 	head.material = cubeMaterial1;
-	// 	head.scale.set(0.02, 0.02, 0.02);
-
-	// 	const head2 = head.clone();
-	// 	head2.position.x = - 2;
-	// 	head2.material = cubeMaterial2;
-
-	// 	const head3 = head.clone();
-	// 	head3.position.x = 2;
-	// 	head3.material = cubeMaterial3;
-
-	// 	scene.add( head, head2, head3 );
-
-	// } );
 
 	//renderer
 	renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -128,12 +105,24 @@ function init() {
 	window.addEventListener('resize', onWindowResize);
 }
 
+async function loadModels(model_url, model_type){
+	// Ref: https://discoverthreejs.com/book/first-steps/load-models/
+	switch(type){
+		case "gltf":
+			const loader = new GLTFLoader();
+		case "stl":
+			const loader = new STLLoader();
+	}
+	
+	const loaded = await loader.loadAsync(model_url);
+	scene.add(loaded);
+}
+
 function setupXR() {
 	renderer.xr.enabled = true;
 	document.body.appendChild(VRButton.createButton(renderer));
 
 	// Controllers and Hand Tracking
-
 	const controllerModelFactory = new XRControllerModelFactory();
 	const handModelFactory = new XRHandModelFactory().setPath("./Assets/Scripts/THREE/examples/models/fbx/");
 
